@@ -3,10 +3,12 @@ import MainButton from "../../../Components/Button/button";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormControl from "../FormControl/formControl";
-import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import userLogin from "../../../Redux/actions/login";
 
-function FormikLogin() {
+function FormikLogin(props) {
+  const dispatch = useDispatch();
   const initialValues = {
     email: "",
     password: "",
@@ -16,9 +18,9 @@ function FormikLogin() {
 
     password: Yup.string().required("This Field is Required"),
   });
-  const history = useHistory();
-  const onSubmit = () => {
-    history.push("/menu");
+
+  const onSubmit = (values, { setSubmitting, setFieldError }) => {
+    dispatch(userLogin(values, setSubmitting(false), setFieldError));
   };
 
   return (
@@ -42,7 +44,12 @@ function FormikLogin() {
             label="Password"
           />
 
-          <MainButton type="submit" label="Sign In" color="secondary" />
+          <MainButton
+            type="submit"
+            label="Sign In"
+            color="secondary"
+            disabled={!formik.isValid || formik.isSubmitting}
+          />
           <div>
             If you didn't have an account <Link to="/register"> Register</Link>
           </div>
