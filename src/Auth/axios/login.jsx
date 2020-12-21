@@ -1,12 +1,13 @@
 import axiosInstance from "../BaseUrl/baseUrl";
 
 export const postLogin = async (user) => {
-  var data = new FormData();
-
-  data.append("email", user.email);
-  data.append("password", user.password);
-  data.append("client_id", "2");
-  data.append("client_secret", "fhMZQxfVREJrII50IeN4ThIZCerdOFjxiRGu7Lc0");
+  let data = new FormData();
+  data = {
+    email: user.email,
+    password: user.password,
+    client_id: "2",
+    client_secret: "fhMZQxfVREJrII50IeN4ThIZCerdOFjxiRGu7Lc0",
+  };
 
   var config = {
     method: "post",
