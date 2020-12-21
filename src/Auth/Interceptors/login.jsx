@@ -1,5 +1,4 @@
-import history from "../../routes/history";
-import { axiosInstance } from "../baseUrl";
+import axiosInstance from "../BaseUrl/baseUrl";
 
 //interceptors
 axiosInstance.interceptors.request.use((request) => {
@@ -9,7 +8,7 @@ axiosInstance.interceptors.request.use((request) => {
 axiosInstance.interceptors.response.use(
   (response) => {
     console.log("handle response", response);
-    history.push("welcom");
+
     return response;
   },
   (error) => {

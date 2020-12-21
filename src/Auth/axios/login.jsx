@@ -1,45 +1,20 @@
-import axiosInstance from "../BaseUrl/baseUrl";
+import axiosInstance from "../Interceptors/login";
 
-// export const postLogin = async (user) => {
-//   let postData = {
-//     email: user.email,
-//     password: user.password,
-//     client_id: "2",
-//     client_secret: "fhMZQxfVREJrII50IeN4ThIZCerdOFjxiRGu7Lc0",
-//   };
-
-//   let axiosConfig = {
-//     headers: {
-//       "Accept-Language": "en",
-//     },
-//   };
-//   let resp;
-//   try {
-//     resp = axiosInstance.post("api/v1/users/login", postData, axiosConfig);
-//     console.log(resp.data);
-//   } catch (err) {
-
-//     console.error(err);
-//   }
-
-//   return await axiosInstance(resp);
-// };
 export const postLogin = async (user) => {
-  var data = new FormData();
+  let url = "api/v1/users/login";
+  let postData = {
+    email: user.email,
+    password: user.password,
+    client_id: 2,
+    client_secret: "fhMZQxfVREJrII50IeN4ThIZCerdOFjxiRGu7Lc0",
+  };
 
-  data.append("email", user.email);
-  data.append("password", user.password);
-  data.append("client_id", "2");
-  data.append("client_secret", "fhMZQxfVREJrII50IeN4ThIZCerdOFjxiRGu7Lc0");
-
-  var config = {
-    method: "post",
-    url: "api/v1/users/login",
+  let axiosInfoHeader = {
     headers: {
       "Accept-Language": "en",
     },
-    data: data,
   };
 
-  return await axiosInstance(config);
+  const response = await axiosInstance.post(url, postData, axiosInfoHeader);
+  console.log(response);
 };

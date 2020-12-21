@@ -9,6 +9,6 @@ export const userLogin = (user) => ({
 export const RESPONSE_USER_INFO = (user) => ({
   type: actionTypes.RESPONSE_USER_INFO,
   payload: {
-    userInfo: user,
+    user_Info: user,
   },
 });

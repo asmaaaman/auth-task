@@ -11,7 +11,7 @@ function loginReducer(state = {}, action) {
     case actionTypes.RESPONSE_USER_INFO: {
       return {
         ...state,
-        userInfo: action.payload.userInfo,
+        user_Info: action.payload.user_Info,
       };
     }
     default:

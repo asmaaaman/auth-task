@@ -22,9 +22,9 @@ function FormikLogin(props) {
     password: Yup.string().required("This Field is Required"),
   });
 
-  const onSubmit = (values, sumbitingProps) => {
+  const onSubmit = (values) => {
     dispatch(userLogin(values));
-    sumbitingProps.setSubmitting(false);
+
     history.push("/welcome");
   };
 
@@ -56,7 +56,7 @@ function FormikLogin(props) {
             disabled={!formik.isValid || formik.isSubmitting}
           />
           <div>
-            If you didn't have an account <Link to="/register"> Register</Link>
+            If you do not have an account <Link to="/register"> Register</Link>
           </div>
         </Form>
       )}
