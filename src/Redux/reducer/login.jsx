@@ -8,13 +8,12 @@ function loginReducer(state = {}, action) {
         user: action.payload.user,
       };
     }
-    // case actionTypes.RETURN_USER_DATA: {
-    //   return {
-    //     ...state,
-    //     user_data: action.payload.user_data,
-
-    //   };
-    // }
+    case actionTypes.RESPONSE_USER_INFO: {
+      return {
+        ...state,
+        userInfo: action.payload.userInfo,
+      };
+    }
     default:
       return state;
   }

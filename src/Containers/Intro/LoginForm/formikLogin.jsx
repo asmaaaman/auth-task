@@ -5,10 +5,13 @@ import * as Yup from "yup";
 import FormControl from "../FormControl/formControl";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import userLogin from "../../../Redux/actions/login";
+import { userLogin } from "../../../Redux/actions/login";
+import { useHistory } from "react-router-dom";
 
 function FormikLogin(props) {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const initialValues = {
     email: "",
     password: "",
@@ -19,8 +22,10 @@ function FormikLogin(props) {
     password: Yup.string().required("This Field is Required"),
   });
 
-  const onSubmit = (values, { setSubmitting, setFieldError }) => {
-    dispatch(userLogin(values, setSubmitting(false), setFieldError));
+  const onSubmit = (values, sumbitingProps) => {
+    dispatch(userLogin(values));
+    sumbitingProps.setSubmitting(false);
+    history.push("/welcome");
   };
 
   return (

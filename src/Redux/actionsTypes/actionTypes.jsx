@@ -1,3 +1,4 @@
 export const REGISTER = "REGISTER";
 export const LOGIN = "LOGIN";
-export const RESPONSE = "RESPONSE"; //RETURN USER INFO
+export const RESPONSE_USER_INFO = "RESPONSE_USER_INFO";
+//RETURN USER INFO
