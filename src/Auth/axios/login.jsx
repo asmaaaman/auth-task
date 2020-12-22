@@ -1,4 +1,4 @@
-import axiosInstance from "../Interceptors/login";
+import axiosInstance from "../BaseUrl/baseUrl";
 
 export const postLogin = async (user) => {
   let url = "api/v1/users/login";

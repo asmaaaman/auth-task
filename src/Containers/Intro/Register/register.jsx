@@ -18,7 +18,9 @@ function FormikRegister() {
     username: Yup.string().required("Must Enter User Name!!"),
     email: Yup.string().required("Email Field Required"),
     password: Yup.string().required("This Field is Required"),
-    confirm_password: Yup.string().required("Must Enter Confrim Password"),
+    confirm_password: Yup.string()
+      .required("Must Enter Confrim Password")
+      .oneOf([Yup.ref("password"), ""], "Passwords must be matched"),
     phoneNumber: Yup.string().required("This Field is Required"),
   });
   const history = useHistory();

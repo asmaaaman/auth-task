@@ -6,8 +6,7 @@ function* handleLogin({ payload }) {
   try {
     const response = yield call(postLogin, payload.user);
     console.log(response);
-    console.log("response data in saga", response);
-    // yield put(RESPONSE_USER_INFO(response.data.data.user));
+    yield put(RESPONSE_USER_INFO(response));
   } catch (error) {
     console.log("err", error);
   }
